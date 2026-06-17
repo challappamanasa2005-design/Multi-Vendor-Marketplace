@@ -1,12 +1,7 @@
-import Home from "./pages/Home";
+import VendorRegister from "./pages/VendorRegister";
 
 function App() {
-  return (
-    <div>
-      <Home />
-    </div>
-  );
+  return <VendorRegister />;
 }
 
 export default App;
-
