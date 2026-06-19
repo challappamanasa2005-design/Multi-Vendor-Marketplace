@@ -1,25 +1,30 @@
-function ProductList() {
+function ProductList({ cartItems, setCartItems }) {
+  const products = [
+    { id: 1, name: "Laptop", price: 50000 },
+    { id: 2, name: "Mobile", price: 20000 },
+    { id: 3, name: "Headphones", price: 3000 },
+    { id: 4, name: "Smart Watch", price: 5000 },
+  ];
+
+  const addToCart = (product) => {
+    setCartItems([...cartItems, product]);
+    alert(product.name + " added to cart");
+  };
+
   return (
     <div>
       <h1>Products</h1>
 
-      <div className="product-card">
-        <h3>Laptop</h3>
-        <p>Price: ₹50,000</p>
-        <button>Add to Cart</button>
-      </div>
+      {products.map((product) => (
+        <div key={product.id} className="product-card">
+          <h3>{product.name}</h3>
+          <p>Price: ₹{product.price}</p>
 
-      <div className="product-card">
-        <h3>Mobile</h3>
-        <p>Price: ₹20,000</p>
-        <button>Add to Cart</button>
-      </div>
-
-      <div className="product-card">
-        <h3>Headphones</h3>
-        <p>Price: ₹3,000</p>
-        <button>Add to Cart</button>
-      </div>
+          <button onClick={() => addToCart(product)}>
+            Add to Cart
+          </button>
+        </div>
+      ))}
     </div>
   );
 }

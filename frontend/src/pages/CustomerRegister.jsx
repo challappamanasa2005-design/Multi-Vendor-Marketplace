@@ -1,30 +1,24 @@
 import { useState } from "react";
 
-function VendorRegister() {
+function CustomerRegister() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log({
-      name,
-      email,
-      password,
-    });
-
-    alert("Vendor Registered Successfully");
+    console.log({ name, email });
+    alert("Customer Registered Successfully");
   };
 
   return (
     <div>
-      <h1>Vendor Registration</h1>
+      <h1>Customer Registration</h1>
 
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Vendor Name"
+          placeholder="Customer Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -40,19 +34,10 @@ function VendorRegister() {
 
         <br /><br />
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <br /><br />
-
         <button type="submit">Register</button>
       </form>
     </div>
   );
 }
 
-export default VendorRegister;
+export default CustomerRegister;
