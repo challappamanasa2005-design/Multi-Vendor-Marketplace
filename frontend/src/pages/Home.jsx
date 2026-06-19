@@ -1,8 +1,12 @@
 function Home() {
   return (
     <div>
-      <h1>Multi-Vendor Marketplace</h1>
-      <p>Buy and sell products from multiple vendors.</p>
+      <h1>Welcome to Multi-Vendor Marketplace</h1>
+
+      <p>
+        A platform where multiple vendors can sell products
+        and customers can purchase them.
+      </p>
     </div>
   );
 }
