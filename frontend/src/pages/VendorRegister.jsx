@@ -3,13 +3,13 @@ function VendorRegister() {
     <div>
       <h1>Vendor Registration</h1>
 
-      <input type="text" placeholder="Enter Name" />
+      <input type="text" placeholder="Vendor Name" />
       <br /><br />
 
-      <input type="email" placeholder="Enter Email" />
+      <input type="email" placeholder="Email" />
       <br /><br />
 
-      <input type="password" placeholder="Enter Password" />
+      <input type="password" placeholder="Password" />
       <br /><br />
 
       <button>Register</button>
