@@ -5,16 +5,36 @@ function VendorRegister() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log({
-      name,
-      email,
-      password,
-    });
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/vendors/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+          }),
+        }
+      );
 
-    alert("Vendor Registered Successfully");
+      const data = await response.json();
+
+      alert(data.message);
+
+      setName("");
+      setEmail("");
+      setPassword("");
+    } catch (error) {
+      console.log(error);
+      alert("Registration Failed");
+    }
   };
 
   return (
@@ -27,27 +47,33 @@ function VendorRegister() {
           placeholder="Vendor Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         <button type="submit">Register</button>
       </form>
