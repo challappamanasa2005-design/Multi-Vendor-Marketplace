@@ -17,10 +17,10 @@ function CustomerRegister() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            name,
-            email,
-            password,
-          }),
+  name: name.trim(),
+  email: email.trim(),
+  password: password.trim(),
+}),
         }
       );
 

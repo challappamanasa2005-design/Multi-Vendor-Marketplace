@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 function ProductList({ cartItems, setCartItems }) {
   const [products, setProducts] = useState([]);
-
+const [search, setSearch] = useState("");
   const fetchProducts = async () => {
     try {
       const response = await fetch(
@@ -30,10 +30,21 @@ function ProductList({ cartItems, setCartItems }) {
   return (
     <div>
       <h1>Products</h1>
+<input
+  type="text"
+  placeholder="Search Product..."
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+/>
 
+<br /><br />
       <p>Total Products: {products.length}</p>
 
-      {products.map((product) => (
+      {products
+  .filter((product) =>
+    product.name.toLowerCase().includes(search.toLowerCase())
+  )
+  .map((product) => (
         <div key={product._id} className="product-card">
           <h3>{product.name}</h3>
 

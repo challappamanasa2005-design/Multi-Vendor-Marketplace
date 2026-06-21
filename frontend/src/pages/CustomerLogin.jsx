@@ -16,9 +16,9 @@ function CustomerLogin() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            email,
-            password,
-          }),
+  email: email.trim(),
+  password: password.trim(),
+}),
         }
       );
 

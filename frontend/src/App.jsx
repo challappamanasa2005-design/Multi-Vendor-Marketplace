@@ -11,6 +11,8 @@ import Cart from "./pages/Cart";
 import Footer from "./components/Footer";
 import VendorDashboard from "./pages/VendorDashboard";
 import CustomerRegister from "./pages/CustomerRegister";
+import Checkout from "./pages/Checkout";
+import OrderHistory from "./pages/OrderHistory";
 function App() {
   const [cartItems, setCartItems] = useState([]);
   return (
@@ -26,6 +28,8 @@ function App() {
         <Route path="/cart" element={<Cart cartItems={cartItems}  setCartItems={setCartItems}/>} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
         <Route path="/customer-register" element={<CustomerRegister/>}/>
+        <Route path="/checkout" element={<Checkout cartItems={cartItems} />} />
+        <Route path="/orders" element={<OrderHistory />} />
       </Routes>
        <Footer />
     </BrowserRouter>

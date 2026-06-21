@@ -19,28 +19,39 @@ router.post("/register", async (req, res) => {
   }
 });
 
+
 router.post("/login", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    console.log(req.body); 
 
-    const customer = await Customer.findOne({ email });
+    const { email, password } = req.body;
+    const cleanEmail = email.trim();
+const cleanPassword = password.trim();
+
+    const customer = await Customer.findOne({ email:cleanEmail });
 
     if (!customer) {
       return res.status(400).json({
         message: "Customer not found",
       });
     }
-console.log("Entered Password:", password);
+
+   console.log("Entered Password:", password);
 console.log("DB Password:", customer.password);
-    if (customer.password !== password) {
-      return res.status(400).json({
-        message: "Invalid Password",
+console.log("DB Password Length:", customer.password.length);
+console.log("Entered Password Length:", password.length);
+    // Debug version
+    if (customer.password === password) {
+      return res.json({
+        message: "Login Successful",
       });
     }
-
-    res.json({
-      message: "Login Successful",
+if (customer.password !== cleanPassword) {
+    return res.status(400).json({
+      message: "Invalid Password",
     });
+  }
+
   } catch (error) {
     res.status(500).json({
       message: error.message,

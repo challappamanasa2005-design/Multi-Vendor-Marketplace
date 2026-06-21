@@ -6,7 +6,7 @@ const productRoutes = require("./routes/productRoutes");
 const customerRoutes = require("./routes/customerRoutes");
 const express = require("express");
 const cors = require("cors");
-
+const orderRoutes = require("./routes/OrderRoutes");
 const connectDB = require("./config/db");
 const vendorRoutes = require("./routes/vendorRoutes");
 
@@ -20,7 +20,7 @@ connectDB();
 app.use("/api/vendors", vendorRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/customers", customerRoutes);
-
+app.use("/api/orders", orderRoutes);
 app.get("/", (req, res) => {
   res.send("Backend Running");
 });

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 function Cart({ cartItems, setCartItems }) {
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.price,
@@ -36,6 +37,9 @@ function Cart({ cartItems, setCartItems }) {
           </ul>
 
           <h3>Total: ₹{totalPrice}</h3>
+          <Link to="/checkout">
+  <button>Proceed to Checkout</button>
+</Link>
         </>
       )}
     </div>
