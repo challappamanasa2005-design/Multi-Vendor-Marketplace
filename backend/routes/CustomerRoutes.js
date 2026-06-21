@@ -1,16 +1,16 @@
 const express = require("express");
-const Vendor = require("../models/Vendor");
+const Customer = require("../models/Customer");
 
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
   try {
-    const vendor = new Vendor(req.body);
+    const customer = new Customer(req.body);
 
-    await vendor.save();
+    await customer.save();
 
     res.json({
-      message: "Vendor Registered Successfully",
+      message: "Customer Registered Successfully",
     });
   } catch (error) {
     res.status(500).json({
@@ -23,15 +23,16 @@ router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const vendor = await Vendor.findOne({ email });
+    const customer = await Customer.findOne({ email });
 
-    if (!vendor) {
+    if (!customer) {
       return res.status(400).json({
-        message: "Vendor not found",
+        message: "Customer not found",
       });
     }
-
-    if (vendor.password !== password) {
+console.log("Entered Password:", password);
+console.log("DB Password:", customer.password);
+    if (customer.password !== password) {
       return res.status(400).json({
         message: "Invalid Password",
       });

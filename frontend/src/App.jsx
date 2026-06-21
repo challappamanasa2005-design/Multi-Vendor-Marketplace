@@ -23,7 +23,7 @@ function App() {
         <Route path="/vendor-login" element={<VendorLogin />} />
         <Route path="/customer-login" element={<CustomerLogin />} />
         <Route path="/products" element={ <ProductList cartItems={cartItems} setCartItems={setCartItems} />} />
-        <Route path="/cart" element={<Cart cartItems={cartItems} />} />
+        <Route path="/cart" element={<Cart cartItems={cartItems}  setCartItems={setCartItems}/>} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
         <Route path="/customer-register" element={<CustomerRegister/>}/>
       </Routes>
