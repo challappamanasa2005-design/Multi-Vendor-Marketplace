@@ -115,124 +115,120 @@ const updateProduct = async () => {
     alert("Failed to Update Product");
   }
 };
+return (
+  <div>
+    <h1>Vendor Dashboard</h1>
 
-  return (
-    <div>
-      <h1>Vendor Dashboard</h1>
+    <h3>Add New Product</h3>
 
-      <h3>Add New Product</h3>
+    <input
+      type="text"
+      placeholder="Product Name"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+    />
+    <br /><br />
 
-      <input
-        type="text"
-        placeholder="Product Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <br /><br />
+    <input
+      type="number"
+      placeholder="Price"
+      value={price}
+      onChange={(e) => setPrice(e.target.value)}
+    />
+    <br /><br />
 
-      <input
-        type="number"
-        placeholder="Price"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-      />
-      <br /><br />
+    <input
+      type="text"
+      placeholder="Category"
+      value={category}
+      onChange={(e) => setCategory(e.target.value)}
+    />
+    <br /><br />
 
-      <input
-        type="text"
-        placeholder="Category"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-      />
-      <br /><br />
+    <input
+      type="text"
+      placeholder="Image URL"
+      value={image}
+      onChange={(e) => setImage(e.target.value)}
+    />
+    <br /><br />
 
-      <input
-        type="text"
-        placeholder="Image URL"
-        value={image}
-        onChange={(e) => setImage(e.target.value)}
-      />
-      <br /><br />
-
-      <button onClick={handleAddProduct}>
-        Add Product
-      </button>
-      <hr />
-
-      <h2>My Products</h2>
-
-      {products.map((product) => (
-        <div key={product._id}>
-          <h4>{product.name}</h4>
-          <p>Price: ₹{product.price}</p>
-          <p>Category: {product.category}</p>
-
-          <button
-            onClick={() => deleteProduct(product._id)}
-          >
-            Delete
-          </button>
-          <button onClick={() => startEdit(product)}>
-  Edit
-</button>
-{products.map((product) => (
-  <div key={product._id}>
-    <h4>{product.name}</h4>
-    <p>Price: ₹{product.price}</p>
-    <p>Category: {product.category}</p>
-
-    <button onClick={() => deleteProduct(product._id)}>
-      Delete
+    <button onClick={handleAddProduct}>
+      Add Product
     </button>
-
-    <button onClick={() => startEdit(product)}>
-      Edit
-    </button>
-
-    {editId === product._id && (
-      <div>
-        <input
-          type="text"
-          value={editName}
-          onChange={(e) => setEditName(e.target.value)}
-          placeholder="Product Name"
-        />
-
-        <br /><br />
-
-        <input
-          type="number"
-          value={editPrice}
-          onChange={(e) => setEditPrice(e.target.value)}
-          placeholder="Price"
-        />
-
-        <br /><br />
-
-        <input
-          type="text"
-          value={editCategory}
-          onChange={(e) => setEditCategory(e.target.value)}
-          placeholder="Category"
-        />
-
-        <br /><br />
-
-        <button onClick={updateProduct}>
-          Update Product
-        </button>
-      </div>
-    )}
 
     <hr />
-  </div>
-))}
 
-          <hr />
-        </div>
-      ))}
-    </div>
-  );
+    <h2>My Products</h2>
+
+    {products.map((product) => (
+      <div key={product._id}>
+        
+        {product.image && (
+          <img
+            src={product.image}
+            alt={product.name}
+            width="150"
+            height="150"
+          />
+        )}
+
+        <h4>{product.name}</h4>
+        <p>Price: ₹{product.price}</p>
+        <p>Category: {product.category}</p>
+
+        <button onClick={() => deleteProduct(product._id)}>
+          Delete
+        </button>
+
+        {" "}
+
+        <button onClick={() => startEdit(product)}>
+          Edit
+        </button>
+
+        {editId === product._id && (
+          <div>
+            <br />
+
+            <input
+              type="text"
+              value={editName}
+              onChange={(e) => setEditName(e.target.value)}
+              placeholder="Product Name"
+            />
+
+            <br /><br />
+
+            <input
+              type="number"
+              value={editPrice}
+              onChange={(e) => setEditPrice(e.target.value)}
+              placeholder="Price"
+            />
+
+            <br /><br />
+
+            <input
+              type="text"
+              value={editCategory}
+              onChange={(e) => setEditCategory(e.target.value)}
+              placeholder="Category"
+            />
+
+            <br /><br />
+
+            <button onClick={updateProduct}>
+              Update Product
+            </button>
+          </div>
+        )}
+
+        <hr />
+      </div>
+    ))}
+  </div>
+);
 }
 
 export default VendorDashboard;

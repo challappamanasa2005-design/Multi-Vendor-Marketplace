@@ -38,7 +38,7 @@ function CustomerRegister() {
   };
 
   return (
-    <div>
+      <div>
       <h1>Customer Registration</h1>
 
       <form onSubmit={handleSubmit}>

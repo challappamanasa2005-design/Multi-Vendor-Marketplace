@@ -46,6 +46,14 @@ const [search, setSearch] = useState("");
   )
   .map((product) => (
         <div key={product._id} className="product-card">
+          {product.image && (
+  <img
+    src={product.image}
+    alt={product.name}
+    width="150"
+    height="150"
+  />
+)}
           <h3>{product.name}</h3>
 
           <p>Price: ₹{product.price}</p>
@@ -60,5 +68,7 @@ const [search, setSearch] = useState("");
     </div>
   );
 }
+
+
 
 export default ProductList;

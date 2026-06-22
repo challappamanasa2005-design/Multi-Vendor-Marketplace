@@ -27,6 +27,9 @@ function VendorLogin() {
       alert(data.message);
 
       if (data.message === "Login Successful") {
+         localStorage.setItem("vendorEmail", email);
+
+  console.log(localStorage.getItem("vendorEmail"));
         window.location.href = "/vendor-dashboard";
       }
     } catch (error) {
@@ -36,7 +39,7 @@ function VendorLogin() {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h1>Vendor Login</h1>
 
       <form onSubmit={handleLogin}>

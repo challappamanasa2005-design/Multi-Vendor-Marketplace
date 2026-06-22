@@ -38,7 +38,7 @@ function VendorRegister() {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h1>Vendor Registration</h1>
 
       <form onSubmit={handleSubmit}>

@@ -23,10 +23,12 @@ function CustomerLogin() {
       );
 
       const data = await response.json();
-
+      console.log(data.message);
       alert(data.message);
 
       if (data.message === "Login Successful") {
+        localStorage.setItem("customerEmail", email);
+         console.log(localStorage.getItem("customerEmail"));
         window.location.href = "/";
       }
     } catch (error) {
@@ -36,7 +38,7 @@ function CustomerLogin() {
   };
 
   return (
-    <div>
+   <div className="form-container">
       <h1>Customer Login</h1>
 
       <form onSubmit={handleLogin}>
